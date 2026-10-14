@@ -43,3 +43,9 @@ Thumbs.db
 # Local regression scratch directories
 **/test-tmp/
 /test-tmp/
+
+# Yarn generated caches/state (keep yarn.lock if adopting Yarn installs)
+**/.yarn/cache/
+**/.yarn/unplugged/
+**/.yarn/install-state.gz
+**/.pnp.*
