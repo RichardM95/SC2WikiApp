@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {contentUrl,consumeSessionLines,visibleColumns,contentRevision,otherParagraph} from '../src/protocol.mjs';
+test('entries evidence and images are pinned to immutable pack including cached versions',()=>{for(const path of ['data/entries/A/X.json','data/evidence/A/X.json','assets/images/icon.png']){assert.equal(contentUrl('batch-one',path),'/__content/batch-one/'+path);assert.notEqual(contentUrl('batch-one',path),contentUrl('batch-two',path));}assert.throws(()=>contentUrl('bad/path','data/index.json'));assert.throws(()=>contentUrl('batch-one','../index.html'));});
+test('stream chunks retain incomplete line and dispatch only complete update events',()=>{const first=consumeSessionLines('{"event":"hello"}\n{"event":"content-');assert.deepEqual(first.events,[{event:'hello'}]);const second=consumeSessionLines(first.rest+'changed","batch":"新版"}\n');assert.deepEqual(second.events,[{event:'content-changed',batch:'新版'}]);assert.equal(second.rest,'');});
+test('malformed or unbounded stream data causes reconnect rather than silently stale data',()=>{assert.throws(()=>consumeSessionLines('invalid\n'));assert.throws(()=>consumeSessionLines('x'.repeat(1048577)));});
+test('Other evidence columns are hidden without dropping numerical row columns',()=>{const block={headers:['等级','内部行为','数量'],evidenceColumns:[1]};assert.deepEqual(visibleColumns(block,false),[0,2]);assert.deepEqual(visibleColumns(block,true),[0,1,2]);});
+
+test('same authority batch content revisions remain distinguishable',()=>{assert.equal(contentRevision('v4-20261013-1-123456abcdef'),'123456abcdef');assert.notEqual(contentRevision('v4-20261013-1-123456abcdef'),contentRevision('v4-20261013-1-987654fedcba'));assert.equal(contentRevision(null),'无');});
+test('Other original technical prose appears only in explicit evidence view',()=>{const block={text:'相关对象触发效果',originalText:'Behavior:Internal触发效果'};assert.equal(otherParagraph(block,false),'相关对象触发效果');assert.equal(otherParagraph(block,true),'Behavior:Internal触发效果');assert.equal(otherParagraph({text:'普通文字'},true),'普通文字');});

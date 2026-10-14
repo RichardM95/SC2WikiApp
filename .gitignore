@@ -1,0 +1,45 @@
+# Frontend dependencies and generated client
+**/node_modules/
+**/dist/
+**/.vite/
+**/coverage/
+*.tsbuildinfo
+
+# Python / Go development output
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.venv/
+**/venv/
+*.exe
+*.test
+*.prof
+*.log
+
+# Owned generated products, local data and build caches
+/release/
+/releases/
+/artifacts/
+/runtime/
+/wiki-data/
+/products/
+/tmp/
+/.cache/
+/wiki-app/launcher/.cache/
+/wiki-app/launcher/launcher
+/wiki-app/launcher/launcher.exe
+/wiki-app/config/
+*.zip
+
+# Local settings / credentials; keep documented examples
+.env
+.env.*
+!.env.example
+/.vscode/
+/.idea/
+.DS_Store
+Thumbs.db
+
+# Local regression scratch directories
+**/test-tmp/
+/test-tmp/
