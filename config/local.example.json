@@ -1,0 +1,9 @@
+{
+  "projectDir": "E:/Program Files (x86)/sc2-agent-hub-data/projects/SCORE-fa82e2d014",
+  "hubRoot": "E:/Program Files (x86)/sc2-agent-hub",
+  "sourceRoot": "C:/Users/43732/Desktop/SCORE",
+  "toolboxRoot": "E:/Program Files (x86)/SC2EditorTool",
+  "gameRoot": "E:/Program Files (x86)/StarCraft II",
+  "gamedataRoot": "E:/Program Files (x86)/SC2GameData",
+  "goExecutable": "E:/Program Files (x86)/sc2-agent-hub/tmp/score-wiki-v3/toolchain/go/bin/go.exe"
+}

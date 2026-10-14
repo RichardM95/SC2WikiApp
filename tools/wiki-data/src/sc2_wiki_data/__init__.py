@@ -1,0 +1,1 @@
+"""SCORE encyclopedia data pipeline."""

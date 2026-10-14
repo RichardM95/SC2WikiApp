@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sc2-wiki-data"
+version = "0.1.0"
+description = "SCORE encyclopedia data pipeline"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=10"]
+
+[project.scripts]
+wiki-data = "sc2_wiki_data.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

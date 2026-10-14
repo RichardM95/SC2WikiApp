@@ -1,0 +1,16 @@
+{
+  "name": "sc2-wiki-app",
+  "version": "4.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "start": "npm run dev --workspace score-wiki --",
+    "dev": "npm run dev --workspace score-wiki --",
+    "test": "npm run test --workspace score-wiki",
+    "typecheck": "npm run typecheck --workspace score-wiki",
+    "build": "npm run build --workspace score-wiki",
+    "package": "powershell -NoProfile -File scripts/package.ps1"
+  }
+}
